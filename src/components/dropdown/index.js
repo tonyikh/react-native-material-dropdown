@@ -481,6 +481,7 @@ export default class Dropdown extends PureComponent {
       renderBase,
       labelExtractor,
       dropdownOffset,
+      textFieldStyle,
       renderAccessory = this.renderAccessory,
     } = this.props;
 
@@ -510,6 +511,7 @@ export default class Dropdown extends PureComponent {
 
         {...props}
 
+        style={textFieldStyle}
         value={title}
         editable={false}
         onChangeText={undefined}
@@ -550,11 +552,11 @@ export default class Dropdown extends PureComponent {
   }
 
   renderAccessory() {
-    let { baseColor: backgroundColor } = this.props;
+    let { baseColor: backgroundColor ,accessoryStyle} = this.props;
     let triangleStyle = { backgroundColor };
 
     return (
-      <View style={styles.accessory}>
+      <View style={[styles.accessory,accessoryStyle]}>
         <View style={styles.triangleContainer}>
           <View style={[styles.triangle, triangleStyle]} />
         </View>
@@ -644,7 +646,7 @@ export default class Dropdown extends PureComponent {
       containerStyle,
       overlayStyle: overlayStyleOverrides,
       pickerStyle: pickerStyleOverrides,
-
+      textFieldStyle,
       rippleInsets,
       rippleOpacity,
       rippleCentered,
